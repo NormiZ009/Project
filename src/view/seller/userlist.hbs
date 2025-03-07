@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/Sdashboard.css">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <h2>Seller Dashboard</h2>
+            <nav>
+                <div class="nav-item">
+                    <a href="/dashboard">
+                        <button class="btn">
+                            <i class="fas fa-plus"></i> Add New Product
+                        </button>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="/productlist">
+                    <button class="btn">
+                        <i class="fas fa-box"></i> Products
+                    </button>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="/userlist">
+                    <button class="btn">
+                        <i class="fas fa-users"></i> View Users
+                    </button>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <h1>Seller Panel</h1>
+                <div class="admin-profile">
+                    <span>Welcome, Seller</span>
+                    <button class="btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </button>
+                </div>
+            </div>
+            <!-- User Management -->
+            <div class="users-list" id="userTable">
+                <h2>User Management</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each user}}
+                        <tr>
+                            <td>{{this._id}}</td>
+                            <td>{{this.email}}</td>
+                            {{!-- <td>Admin</td> --}}
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/js/adminlogin.js"></script>
+    <script>
+        // Function to show the appropriate section
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = ['productForm', 'productList', 'userTable'];
+            sections.forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+
+            // Show the selected section
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

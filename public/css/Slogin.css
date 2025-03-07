@@ -1,0 +1,328 @@
+:root {
+    --primary: #00ffd5;
+    --secondary: #7000ff;
+    --accent: #ff00aa;
+    --signup-color: #7000ff;
+    --background: #0a0a0a;
+    --card: #1a1a1a;
+    --text: #ffffff;
+    --text-muted: #888888;
+    --success: #00ff88;
+    --error: #ff0055;
+    --neon-shadow: 0 0 10px rgba(0, 255, 213, 0.5),
+                  0 0 20px rgba(0, 255, 213, 0.3),
+                  0 0 30px rgba(0, 255, 213, 0.1);
+}
+
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    background: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    position: relative;
+    overflow: hidden;
+    background-image: 
+        repeating-linear-gradient(
+            transparent,
+            transparent 50px,
+            rgba(0, 255, 213, 0.1) 50px,
+            rgba(0, 255, 213, 0.1) 51px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 50px,
+            rgba(0, 255, 213, 0.1) 50px,
+            rgba(0, 255, 213, 0.1) 51px
+        );
+}
+
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+    animation: aurora 20s linear infinite;
+}
+
+body::before {
+    background: var(--primary);
+    top: -100px;
+    left: -100px;
+}
+
+body::after {
+    background: var(--accent);
+    bottom: -100px;
+    right: -100px;
+}
+
+@keyframes aurora {
+    0% { transform: rotate(0deg) translate(50px) rotate(0deg); }
+    100% { transform: rotate(360deg) translate(50px) rotate(-360deg); }
+}
+
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 2.5rem;
+    background: var(--card);
+    border: 1px solid var(--primary);
+    border-radius: 2px;
+    position: relative;
+    box-shadow: var(--neon-shadow);
+    animation: containerPulse 4s infinite;
+}
+
+@keyframes containerPulse {
+    0%, 100% { box-shadow: var(--neon-shadow); }
+    50% { box-shadow: none; }
+}
+
+.login-container::before,
+.login-container::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary);
+}
+
+.login-container::before {
+    top: -2px;
+    left: -2px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.login-container::after {
+    bottom: -2px;
+    right: -2px;
+    border-left: none;
+    border-top: none;
+}
+
+h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px var(--primary);
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--text-muted);
+    color: var(--text);
+    font-size: 1rem;
+    padding: 0 0.5rem;
+    transition: all 0.3s;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+input:focus {
+    outline: none;
+    border-bottom-color: var(--primary);
+    box-shadow: 0 4px 6px -6px var(--primary);
+}
+
+.floating-label {
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: var(--text-muted);
+    pointer-events: none;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+input:focus ~ .floating-label,
+input:not(:placeholder-shown) ~ .floating-label {
+    top: -20px;
+    font-size: 0.75rem;
+    color: var(--primary);
+    text-shadow: 0 0 5px var(--primary);
+}
+
+.password-strength {
+    height: 2px;
+    background: var(--text-muted);
+    margin-top: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.strength-meter {
+    height: 100%;
+    width: 0;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-signin {
+    width: 50%;
+    height: 50px;
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.btn-signup {
+    width: 50%;
+    height: 50px;
+    background: transparent;
+    border: 2px solid var(--signup-color);
+    color: var(--signup-color);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.btn-signin:hover {
+    background: var(--primary);
+    color: var(--background);
+    box-shadow: 0 0 20px var(--primary);
+}
+
+.btn-signup:hover {
+    background: var(--signup-color);
+    color: var(--background);
+    box-shadow: 0 0 20px var(--signup-color);
+}
+
+.btn-signin::before,
+.btn-signup::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    transform: rotate(45deg);
+    animation: glitch 2s infinite;
+}
+
+.btn-signin::before {
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(0, 255, 213, 0.3),
+        transparent
+    );
+}
+
+.btn-signup::before {
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(112, 0, 255, 0.3),
+        transparent
+    );
+}
+
+.error-message {
+    color: var(--error);
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s;
+}
+
+input:invalid:not(:placeholder-shown) ~ .error-message {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes glitchText {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+    75% { transform: translateX(-1px); }
+    100% { transform: translateX(1px); }
+}
+
+input:invalid:not(:placeholder-shown) {
+    animation: glitchText 0.3s infinite;
+    color: var(--error);
+    border-bottom-color: var(--error);
+}
+
+.loading {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.success-icon {
+    display: inline-block;
+    color: var(--success);
+    animation: checkmark 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes checkmark {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        margin: 1rem;
+        padding: 2rem;
+    }
+}

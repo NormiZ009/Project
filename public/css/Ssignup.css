@@ -1,0 +1,213 @@
+:root {
+    --primary: #00ffd5;
+    --secondary: #7000ff;
+    --accent: #ff00aa;
+    --signup-color: #7000ff;
+    --background: #0a0a0a;
+    --card: #1a1a1a;
+    --text: #ffffff;
+    --text-muted: #888888;
+    --success: #00ff88;
+    --error: #ff0055;
+    --neon-shadow: 0 0 10px rgba(112, 0, 255, 0.5),
+                  0 0 20px rgba(112, 0, 255, 0.3),
+                  0 0 30px rgba(112, 0, 255, 0.1);
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    background: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    background-image: 
+        repeating-linear-gradient(
+            transparent,
+            transparent 50px,
+            rgba(112, 0, 255, 0.1) 50px,
+            rgba(112, 0, 255, 0.1) 51px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 50px,
+            rgba(112, 0, 255, 0.1) 50px,
+            rgba(112, 0, 255, 0.1) 51px
+        );
+}
+
+.signup-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 2.5rem;
+    background: var(--card);
+    border: 1px solid var(--signup-color);
+    border-radius: 2px;
+    position: relative;
+    box-shadow: var(--neon-shadow);
+    animation: containerPulse 4s infinite;
+}
+
+@keyframes containerPulse {
+    0%, 100% { box-shadow: var(--neon-shadow); }
+    50% { box-shadow: none; }
+}
+
+.signup-container::before,
+.signup-container::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--signup-color);
+}
+
+.signup-container::before {
+    top: -2px;
+    left: -2px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.signup-container::after {
+    bottom: -2px;
+    right: -2px;
+    border-left: none;
+    border-top: none;
+}
+
+h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-align: center;
+    color: var(--signup-color);
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px var(--signup-color);
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--text-muted);
+    color: var(--text);
+    font-size: 1rem;
+    padding: 0 0.5rem;
+    transition: all 0.3s;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+input:focus {
+    outline: none;
+    border-bottom-color: var(--signup-color);
+    box-shadow: 0 4px 6px -6px var(--signup-color);
+}
+
+.floating-label {
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: var(--text-muted);
+    pointer-events: none;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+input:focus ~ .floating-label,
+input:not(:placeholder-shown) ~ .floating-label {
+    top: -20px;
+    font-size: 0.75rem;
+    color: var(--signup-color);
+    text-shadow: 0 0 5px var(--signup-color);
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-signup {
+    width: 50%;
+    height: 50px;
+    background: transparent;
+    border: 2px solid var(--signup-color);
+    color: var(--signup-color);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.btn-signin {
+    width: 50%;
+    height: 50px;
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.btn-signup:hover {
+    background: var(--signup-color);
+    color: var(--background);
+    box-shadow: 0 0 20px var(--signup-color);
+}
+
+.btn-signin:hover {
+    background: var(--primary);
+    color: var(--background);
+    box-shadow: 0 0 20px var(--primary);
+}
+
+.error-message {
+    color: var(--error);
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s;
+}
+
+input:invalid:not(:placeholder-shown) ~ .error-message {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.loading {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--signup-color);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/buynow.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>Cyberpunk</title>
+  <style>
+    .btn {
+      /* Add base button styles */
+      background-color: #2c3e50;
+      color: black;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      /* Move transition to base state */
+    }
+
+    .btn:hover {
+      transform: scale(0.95);
+      background-color: aqua;
+      /* Remove duplicate background-color */
+      color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-container" action="/buynow" method="post">
+    <div class="head">
+      <header>
+        <img src="/images/logo-black.png" class="logo">
+        <div id="grp">
+          <ul id="nav">
+            <li><a href="/game" class="bx bx-category-alt"></a></li>
+            <li><a href="/grow" class="bx bx-category-alt"></a></li>
+            <li><a href="/Cart" class="bx bx-cart-alt"></a></li>
+            <li><a href="/userprofile" class="bx bx bx-user"></a></li>
+          </ul>
+        </div>
+        <div id="srchbx">
+          <input type="text" placeholder="search..." class="srchbx">
+        </div>
+      </header>
+    </div>      
+{{#each products}}
+  {{#if (even @index)}}
+    <div class="product-one">
+      <div class="Circle"></div>
+      <img src="/uploads/{{this.proimage}}" alt="" srcset="" style="width: 205px; height: auto;">
+      <div class="product-Description">
+        <h2 class="product-name">{{this.productName}}</h2>
+        <p>{{this.description}}</p>
+      </div>
+      <div class="product-Price">
+        <h2>Price: ${{this.price}}</h2>
+        <a href="/addtocart/{{this.id}}" class="btn">
+          <i class="fas fa-shopping-cart"></i> Add to Cart
+        </a>
+      </div>
+    </div>
+  {{else}}
+    <div class="product-two">
+      <div class="Circle-two"></div>
+      <img src="/uploads/{{this.proimage}}" alt="" srcset="" style="width: 205px; height: auto;">
+      <div class="product-Description">
+        <h2 class="product-name">{{this.productName}}</h2>
+        <p>{{this.description}}</p>
+      </div>
+      <div class="product-Price">
+        <h2>Price: ${{this.price}}</h2>
+        <a href="/addtocart/{{this.id}}" class="btn">
+          <i class="fas fa-shopping-cart"></i>
+          Add to Cart
+        </a>
+      </div>
+    </div>
+  {{/if}}
+{{/each}}
+
+
+  </div>
+  </div>
+  {{!-- <script src="/buynow.js"></script>
+  <script src="/buynow2.js"></script> --}}
+</body>
+
+</html>

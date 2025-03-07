@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Login</title>
+    <link rel="stylesheet" href="/css/Slogin.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Access</h2>
+        <form id="loginForm" action="/seller" method="POST">
+            <div class="input-group">
+                <input type="text" id="name" name="name" required placeholder=" ">
+                <label class="floating-label">Full Name</label>
+                <span class="error-message">Please enter a valid name</span>
+            </div>
+            
+            <div class="input-group">
+                <input type="email" id="email" name="email" required placeholder=" ">
+                <label class="floating-label">Email Address</label>
+                <span class="error-message">Please enter a valid email</span>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="password" name="password" required placeholder=" ">
+                <label class="floating-label">Password</label>
+                <div class="password-strength">
+                    <div class="strength-meter"></div>
+                </div>
+                <span class="error-message">Password must be at least 8 characters</span>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="btn-signin">Sign In</button>
+                {{!-- <a href="/signup"><button type="button" class="btn-signup">Sign Up</button></a> --}}
+                <a href="/signup" class="btn-signup"><center>Sign Up</center></a>
+            </div>
+        </form>
+    </div>
+    {{!-- <script src="/js/login.js"></script> --}}
+</body>
+</html>

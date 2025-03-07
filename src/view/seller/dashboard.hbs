@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/Sdashboard.css">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <h2>Seller Dashboard</h2>
+            <nav>
+                <div class="nav-item">
+                    <button class="btn">
+                        <i class="fas fa-plus"></i> Add New Product
+                    </button>
+                </div>
+                <div class="nav-item">
+                    <a href="/productlist">
+                        <button class="btn">
+                            <i class="fas fa-box"></i> Products
+                        </button>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="/userlist">
+                    <button class="btn">
+                        <i class="fas fa-users"></i> View Users
+                    </button>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <h1>Seller Panel</h1>
+                <div class="admin-profile">
+                    <span>Welcome, Admin</span>
+                    <a href="/slogout" id="logout-btn">
+                    <button class="btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Product Form -->
+            <div class="product-form" id="productForm">
+                <h2>Add New Product</h2>
+                <form id="addProductForm" action="/dashboard" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>Product Name</label>
+                        <input type="text" name="productName" required placeholder="Enter product name">
+                    </div>
+                    <div class="form-group">
+                        <label>Price ($)</label>
+                        <input type="number" name="price" required placeholder="Enter price">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea name="description" rows="4" required placeholder="Enter product description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Product image</label>
+                        <input type="file" name="proimage" id="proimage">
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select name="category" id="category">
+                            <option value="product">Product</option>
+                            <option value="games">Games</option>
+                            <option value="grow">Grow</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">
+                        <i class="fas fa-plus"></i>
+                        Add Product
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/adminlogin.js"></script>
+    <script>
+        // Function to show the appropriate section
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = ['productForm', 'productList', 'userTable'];
+            sections.forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+
+            // Show the selected section
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
